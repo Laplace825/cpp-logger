@@ -57,29 +57,29 @@ inline LogLevel string2Level(std::string_view lev)
 namespace __details {
 
 // the color to set for different log levels
-inline char level_ansi_colors[static_cast< std::uint8_t >(LogLevel::fatal) + 1]
-                             [6] = {
-                                 "37",   // trace
-                                 "38",   // info
-                                 "35",   // debug
-                                 "33",   // warning
-                                 "31",   // error
-                                 "31;1", // fatal
+inline static char
+    level_ansi_colors[static_cast< std::uint8_t >(LogLevel::fatal) + 1][6] = {
+        "37",   // trace
+        "38",   // info
+        "35",   // debug
+        "33",   // warning
+        "31",   // error
+        "31;1", // fatal
 };
 
 // use this marco to get format color with the value
-#define LOG_ANSI_COLOR(X) std::format("\E[{}m", X)
+#define __LOG_ANSI_COLOR(X) std::format("\E[{}m", X)
 
 // only print when you have a higher log level
 // the level is set to info by default
-inline auto maxLogLevel_Limit = []() -> LogLevel {
+inline auto static maxLogLevel_Limit = []() -> LogLevel {
     /**
      * @brief: get from your environment variable
      * if not set, return info
      * just set LAP_MAXLOG_LEVEL=debug or else, then you can see the log
      * you can change LAP_MAXLOG_LEVEL to another name
      */
-    std::cout << LOG_ANSI_COLOR(level_ansi_colors[0]);
+    std::cout << __LOG_ANSI_COLOR(level_ansi_colors[0]);
     if (auto envLoglevel = std::getenv("MAXLOG_LEVEL"); envLoglevel)
     {
         std::cout << std::format("[MAXLOG_LEVEL is set to {}]\n", envLoglevel);
@@ -141,7 +141,7 @@ inline static std::ofstream ofs("./log.txt", std::ios::app);
                     fmt.format_string(), std::forward< Args >(args)...));    \
             if (__details::ofs) __details::ofs << msg;                       \
             std::cout << std::format("{}{}\E[0m",                            \
-                LOG_ANSI_COLOR(__details::level_ansi_colors[(                \
+                __LOG_ANSI_COLOR(__details::level_ansi_colors[(              \
                     std::uint8_t)logger::LogLevel::name]),                   \
                 msg);                                                        \
         }                                                                    \
@@ -178,7 +178,7 @@ void log(LogLevel level,
         }
 
         std::cout << std::format("{}{}\E[0m",
-            LOG_ANSI_COLOR(__details::level_ansi_colors[(std::uint8_t)level]),
+            __LOG_ANSI_COLOR(__details::level_ansi_colors[(std::uint8_t)level]),
             msg);
     }
 }
