@@ -30,5 +30,8 @@
 *.exe
 *.out
 *.app
+.vscode/*
 bin/*
 build/*
+cmake-build/*
+.cache/*

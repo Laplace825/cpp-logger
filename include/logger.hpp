@@ -1,21 +1,24 @@
 #pragma once
 
+#include <chrono>
 #include <concepts>
 #include <cstdint>
 #include <cstdlib>
+#include <ctime>
 #include <format>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <source_location>
 #include <string>
 #include <string_view>
+#include <utility>
 
 namespace lap {
 
 namespace logger {
 
-#define _LAP_LOGGER_LEVEL(f) \
-    f(trace) f(info) f(debug) f(warning) f(error) f(fatal)
+#define _LAP_LOGGER_LEVEL(f) f(trace) f(info) f(debug) f(warn) f(error) f(fatal)
 
 enum class LogLevel : std::uint8_t
 {
@@ -60,7 +63,7 @@ namespace __details {
 inline static char
     level_ansi_colors[static_cast< std::uint8_t >(LogLevel::fatal) + 1][6] = {
         "37",   // trace
-        "38",   // info
+        "32",   // info
         "35",   // debug
         "33",   // warning
         "31",   // error
@@ -98,22 +101,24 @@ template < typename _Arg >
 class fmt_with_source_location
 {
   private:
-    std::source_location location;
-    _Arg fmt;
+    std::source_location m_location;
+    _Arg m_fmt;
 
   public:
     template < typename U >
         requires(std::constructible_from< _Arg, U >)
-    consteval fmt_with_source_location(U&& _fmt,
+    //   U  => const char * || const char[&] || string ......
+    // _Arg => std::format_string<...>
+    consteval fmt_with_source_location(U&& fmt,
         std::source_location loc =
             std::source_location::current()) // must be there
-        : fmt(std::forward< U >(_fmt)), location(std::move(loc))
+        : m_fmt(std::forward< U >(fmt)), m_location(std::move(loc))
     {
     }
 
-    constexpr _Arg const& format_string() const { return fmt; }
+    constexpr _Arg const& format_string() const { return m_fmt; }
 
-    constexpr auto const& loc() const { return location; }
+    constexpr auto const& loc() const { return m_location; }
 };
 
 inline static std::ofstream ofs("./log.txt", std::ios::app);
@@ -133,10 +138,16 @@ inline static std::ofstream ofs("./log.txt", std::ios::app);
         if (__details::maxLogLevel_Limit <= logger::LogLevel::name)          \
         {                                                                    \
             auto loc = fmt.loc();                                            \
-            auto msg = std::format("{}:{}: [{}] {}\n",                       \
+            auto now = std::chrono::system_clock::to_time_t(                 \
+                std::chrono::system_clock::now());                           \
+            std::stringstream now_str;                                       \
+            now_str << std::put_time(                                        \
+                std::localtime(&now), "%Y-%m-%dT%H:%M:%S");                  \
+            auto msg = std::format("[ {:^5} ] {} * {}:{} -> {}\n",           \
+                #name,                                                       \
+                now_str.str(),                                               \
                 loc.file_name(),                                             \
                 loc.line(),                                                  \
-                #name,                                                       \
                 std::format(                                                 \
                     fmt.format_string(), std::forward< Args >(args)...));    \
             if (__details::ofs) __details::ofs << msg;                       \
@@ -150,8 +161,26 @@ _LAP_LOGGER_LEVEL(_FUNCTION)
 #undef _FUNCTION
 
 // just print the value with the name
-// reflection
-#define LOG_Println(X) ::lap::logger::log_debug(#X "={}", X);
+// marco to generate log_with_value_name
+#define __log_with_value_name_1(level, X) \
+    ::lap::logger::log_##level(#X " = {}", X)
+#define __log_with_value_name_2(level, X, Y) \
+    ::lap::logger::log_##level(#X " = {}, " #Y " = {}", X, Y)
+#define __log_with_value_name_3(level, X, Y, Z) \
+    ::lap::logger::log_##level(#X " = {}, " #Y " = {}, " #Z " = {}", X, Y, Z)
+#define __log_with_value_NARGS_IMPL(_1, _2, _3, N, ...) N
+#define __log_with_value_NARGS(...) \
+    __log_with_value_NARGS_IMPL(__VA_ARGS__, 3, 2, 1)
+
+#define __log_with_value_CONCANT_2(X, Y) X##Y
+#define __log_with_value_CONCANT(X, Y) __log_with_value_CONCANT_2(X, Y)
+#define __log_with_value_EXPAND_2(X) X
+#define __log_with_value_EXPAND(X) __log_with_value_EXPAND_2(X)
+
+// @brief: you can print three values at most with their names
+#define log_with_value_name(level, ...)                                      \
+    __log_with_value_EXPAND(__log_with_value_CONCANT(__log_with_value_name_, \
+        __log_with_value_NARGS(__VA_ARGS__))(level, __VA_ARGS__))
 
 template < typename... Args >
 void log(LogLevel level,
@@ -167,10 +196,18 @@ void log(LogLevel level,
     if (__details::maxLogLevel_Limit <= level)
     {
         auto loc = fmt.loc();
-        auto msg = std::format("{}:{}: [{}] {}\n",
+        auto now = std::chrono::system_clock::to_time_t(
+            std::chrono::system_clock::now());
+        std::stringstream now_str;
+
+        now_str << std::put_time(
+            std::localtime(&now), "%Y-%m-%dT%H:%M:%S"); // "%Y-%m-%d %X"
+
+        auto msg = std::format("[ {:^5} ] {} * {}:{} -> {}\n",
+            level2String(level),
+            now_str.str(),
             loc.file_name(),
             loc.line(),
-            level2String(level),
             std::format(fmt.format_string(), std::forward< Args >(args)...));
         if (__details::ofs)
         {

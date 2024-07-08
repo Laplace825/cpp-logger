@@ -1,0 +1,69 @@
+
+[ info  ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:23 -> Hello,1
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:24 -> Hello
+[ warn  ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:25 -> 1
+[ error ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:26 -> 1
+[ fatal ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:27 -> 1
+[ fatal ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:29 -> str = Hello
+[ info  ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:31 -> Hello
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 0, vec[i] = 1
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 1, vec[i] = 2
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 2, vec[i] = 3
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 3, vec[i] = 4
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 4, vec[i] = 5
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 5, vec[i] = 6
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 6, vec[i] = 7
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 7, vec[i] = 8
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 8, vec[i] = 9
+[ debug ] 2024-07-08T17:43:18 * /home/lap/app/cpp/logger/main.cc:36 -> i = 9, vec[i] = 10
+[ info  ] 2024-07-08T17:44:37 * /home/lap/app/cpp/logger/main.cc:23 -> Hello,1
+[ debug ] 2024-07-08T17:44:38 * /home/lap/app/cpp/logger/main.cc:24 -> Hello
+[ warn  ] 2024-07-08T17:44:39 * /home/lap/app/cpp/logger/main.cc:25 -> 1
+[ error ] 2024-07-08T17:44:40 * /home/lap/app/cpp/logger/main.cc:26 -> 1
+[ fatal ] 2024-07-08T17:45:33 * /home/lap/app/cpp/logger/main.cc:27 -> 1
+[ fatal ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:29 -> str = Hello
+[ info  ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:31 -> Hello
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 0, vec[i] = 1
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 1, vec[i] = 2
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 2, vec[i] = 3
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 3, vec[i] = 4
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 4, vec[i] = 5
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 5, vec[i] = 6
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 6, vec[i] = 7
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 7, vec[i] = 8
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 8, vec[i] = 9
+[ debug ] 2024-07-08T17:46:19 * /home/lap/app/cpp/logger/main.cc:36 -> i = 9, vec[i] = 10
+[ info  ] 2024-07-08T17:48:48 * /home/lap/app/cpp/logger/main.cc:23 -> Hello,1
+[ debug ] 2024-07-08T17:48:49 * /home/lap/app/cpp/logger/main.cc:24 -> Hello
+[ warn  ] 2024-07-08T17:48:56 * /home/lap/app/cpp/logger/main.cc:25 -> 1
+[ error ] 2024-07-08T17:49:01 * /home/lap/app/cpp/logger/main.cc:26 -> 1
+[ fatal ] 2024-07-08T17:49:01 * /home/lap/app/cpp/logger/main.cc:27 -> 1
+[ fatal ] 2024-07-08T17:49:05 * /home/lap/app/cpp/logger/main.cc:29 -> str = Hello
+[ info  ] 2024-07-08T17:49:06 * /home/lap/app/cpp/logger/main.cc:31 -> Hello
+[ debug ] 2024-07-08T17:49:08 * /home/lap/app/cpp/logger/main.cc:36 -> i = 0, vec[i] = 1
+[ debug ] 2024-07-08T17:49:09 * /home/lap/app/cpp/logger/main.cc:36 -> i = 1, vec[i] = 2
+[ debug ] 2024-07-08T17:49:10 * /home/lap/app/cpp/logger/main.cc:36 -> i = 2, vec[i] = 3
+[ debug ] 2024-07-08T17:49:21 * /home/lap/app/cpp/logger/main.cc:36 -> i = 3, vec[i] = 4
+[ debug ] 2024-07-08T17:49:23 * /home/lap/app/cpp/logger/main.cc:36 -> i = 4, vec[i] = 5
+[ debug ] 2024-07-08T17:49:23 * /home/lap/app/cpp/logger/main.cc:36 -> i = 5, vec[i] = 6
+[ debug ] 2024-07-08T17:49:24 * /home/lap/app/cpp/logger/main.cc:36 -> i = 6, vec[i] = 7
+[ debug ] 2024-07-08T17:49:24 * /home/lap/app/cpp/logger/main.cc:36 -> i = 7, vec[i] = 8
+[ debug ] 2024-07-08T17:49:25 * /home/lap/app/cpp/logger/main.cc:36 -> i = 8, vec[i] = 9
+[ debug ] 2024-07-08T17:49:28 * /home/lap/app/cpp/logger/main.cc:36 -> i = 9, vec[i] = 10
+[ info  ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:23 -> Hello,1
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:24 -> Hello
+[ warn  ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:25 -> 1
+[ error ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:26 -> 1
+[ fatal ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:27 -> 1
+[ fatal ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:29 -> str = Hello
+[ info  ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:31 -> Hello
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 0, vec[i] = 1
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 1, vec[i] = 2
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 2, vec[i] = 3
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 3, vec[i] = 4
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 4, vec[i] = 5
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 5, vec[i] = 6
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 6, vec[i] = 7
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 7, vec[i] = 8
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 8, vec[i] = 9
+[ debug ] 2024-07-08T19:44:41 * /home/lap/app/cpp/logger/main.cc:36 -> i = 9, vec[i] = 10
